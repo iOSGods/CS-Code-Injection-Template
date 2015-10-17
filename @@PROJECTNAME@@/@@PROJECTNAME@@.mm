@@ -14,7 +14,7 @@
 
 /* The "Visit iOSGods.com" link inside the Preferences button */
 - (void)link {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.iosgods.com"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://iosgods.com"]];
 } 
 @end
 

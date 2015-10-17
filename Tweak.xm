@@ -1,6 +1,7 @@
 #import "writeData.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <substrate.h>
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/@@PACKAGENAME@@.plist"
 
@@ -48,9 +49,9 @@ Varieties of a UIAlertView Popup can be found here: http://iosgods.com/topic/139
 */
 
 
-%hook AppDelegate //Replace this with the App's Delegate.
+%hook AppDelegate // Change this with your Application's Delegate. AppController, UnityAppController, GameDelegate etc.
 
--(void)applicationDidBecomeActive:(id)arg { 
+- (BOOL)application:(id)fp8 didFinishLaunchingWithOptions:(id)fp12 { // Popup only once at each launch of the app.
 UIAlertView *igcredits = [[UIAlertView alloc] initWithTitle:@"@@PROJECTNAME@@ Cheats" 
                                                   message:@"\n@@PROJECTNAME@@ Cheats by @@USER@@ for iOSGods.com"
                                                  delegate:self 
@@ -68,7 +69,7 @@ NSString *button = [alertView buttonTitleAtIndex:buttonIndex];
  
 	if([button isEqualToString:@"Visit Us"])
 	{
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.iosgods.com/"]];                                                                                
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://iosgods.com/"]];                                                                                
 	}
 }
 %end

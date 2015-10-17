@@ -1,4 +1,4 @@
-name "iOSGods CSCI Patcher v2.0"
+name "iOSGods CSCI Patcher v2.1"
 prompt FILTER "MobileSubstrate Bundle filter" "com.apple.springboard"
 constrain file "control" to package
 constrain "theos" to link_theos

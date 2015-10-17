@@ -8,6 +8,7 @@ include @@THEOS@@/makefiles/common.mk
 TWEAK_NAME = @@PROJECTNAME@@
 @@PROJECTNAME@@_FILES = Tweak.xm
 @@PROJECTNAME@@_FRAMEWORKS = UIKit
+@@PROJECTNAME@@_LDFLAGS += -Wl,-segalign,4000
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

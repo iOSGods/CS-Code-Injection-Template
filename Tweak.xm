@@ -3,6 +3,9 @@
 #import <UIKit/UIKit.h>
 #import <substrate.h>
 
+/* To MSHook Offsets, use https://iosgods.com/topic/22718-mshook-tweakpatcherfunction-tweakpatcher-withwithout-psedittextcellpsslidercell-generator-online/ */
+/* To Easily Generate Tweak.xm and Preferences Plist https://iosgods.com/topic/24138-code-inject-generator-online-tweakxm-preferencesplist/ */
+
 #define PLIST_PATH @"/var/mobile/Library/Preferences/@@PACKAGENAME@@.plist"
 
 inline bool GetPrefBool(NSString *key) {
@@ -10,41 +13,40 @@ inline bool GetPrefBool(NSString *key) {
 }
 
 %ctor {
-if(GetPrefBool(@"key1")) {
-writeData(0xOFFSET, 0xHEX);
-} else {
+	if(GetPrefBool(@"key1")) {
+		writeData(0xOFFSET, 0xHEX);
+	} else {
 }
 
 
-if(GetPrefBool(@"key2")) {
-writeData(0x10963C, 0xC0F8AC70);
-} else {
+	if(GetPrefBool(@"key2")) {
+		writeData(0x10963C, 0xC0F8AC70);
+	} else {
 }
 
 
-if(GetPrefBool(@"key3")) {
-writeData(0x10ACEA, 0xC0F8C871);
-} else {
+	if(GetPrefBool(@"key3")) {
+		writeData(0x10ACEA, 0xC0F8C871);
+	} else {
 }
 
 
-if(GetPrefBool(@"key4")) {
-writeData(0x1806B8, 0x381C);
-writeData(0x2FA51C, 0x381C);
-writeData(0x1806B8, 0x7047);
-writeData(0x1806B8, 0x7047);
-} else {
+	if(GetPrefBool(@"key4")) {
+		writeData(0x1806B8, 0x381C);
+		writeData(0x2FA51C, 0x381C);
+		writeData(0x1806B8, 0x7047);
+		writeData(0x1806B8, 0x7047);
+	} else {
 }
 
 }
-
 
 
 
 
 /* Popup with a link 
 
-Varieties of a UIAlertView Popup can be found here: http://iosgods.com/topic/13988-varieties-of-uialertview-types-to-use-in-your-tweaks-patchers/
+Varieties of a UIAlertView Popup can be found here: https://iosgods.com/topic/13988-varieties-of-uialertview-types-to-use-in-your-tweaks-patchers/
 
 */
 
@@ -59,17 +61,16 @@ UIAlertView *igcredits = [[UIAlertView alloc] initWithTitle:@"@@PROJECTNAME@@ Ch
 										otherButtonTitles:@"Visit Us", nil]; 
 [igcredits show];
 [igcredits release]; 
-%orig();
+return %orig();
 }
  
 %new
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
  
-NSString *button = [alertView buttonTitleAtIndex:buttonIndex];
+	NSString *button = [alertView buttonTitleAtIndex:buttonIndex];
  
-	if([button isEqualToString:@"Visit Us"])
-	{
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://iosgods.com/"]];                                                                                
+	if([button isEqualToString:@"Visit Us"]) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://iosgods.com/"]];                                                                                
 	}
 }
 %end
